@@ -2,6 +2,7 @@
 import { css, jsx, Global } from "@emotion/react";
 import React from "react";
 
+import { Navbar } from "./components/Navbar";
 import background from "./img/sebastian-svenson-unsplash.jpg";
 
 const App: React.FC = () => {
@@ -17,10 +18,11 @@ const App: React.FC = () => {
         span {
           font-size: 7rem;
           font-weight: 500;
-          color: #e0e0e0;
+          color: #e6ebf2;
         }
       `}
     >
+      <Navbar />
       <span>work in progress</span>
       <Global
         styles={css`
