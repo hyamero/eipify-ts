@@ -7,6 +7,29 @@ import { Navbar } from "./components/Navbar";
 import background from "./img/background1.jpg";
 
 const App: React.FC = () => {
+  const [IP, setIP] = useState<string>();
+
+  useEffect(() => {
+    getIP();
+  }, []);
+
+  const getIP = async () => {
+    const url = "https://api.techniknews.net/ip/";
+    try {
+      //get user IP
+      const res = await axios.get(url);
+      setIP(res.data);
+      console.log(IP);
+      //get full IP data
+      const response = await axios.get(
+        `https://api.techniknews.net/ipgeo/${IP}`
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div
       className="App"
