@@ -1,9 +1,10 @@
 /**@jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { Navbar } from "./components/Navbar";
-import background from "./img/sebastian-svenson-unsplash.jpg";
+import background from "./img/background1.jpg";
 
 const App: React.FC = () => {
   return (
