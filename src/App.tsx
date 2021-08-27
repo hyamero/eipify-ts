@@ -46,7 +46,7 @@ const App: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -67,7 +67,7 @@ const App: React.FC = () => {
     >
       <Navbar />
       {loading && <Loader />}
-      <Button setLoader={setLoader} getIpData={getIpData} />
+      <Button setLoader={setLoader} getIpData={getIpData} loading={loading} />
       <Content dataIP={dataIP} loading={loading} />
       <Global
         styles={css`

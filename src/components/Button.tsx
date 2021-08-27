@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface ButtonProps {
   getIpData: () => void;
   setLoader: () => void;
+  loading: undefined | boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ getIpData, setLoader }) => {
+export const Button: React.FC<ButtonProps> = ({
+  getIpData,
+  setLoader,
+  loading,
+}) => {
+  const [showBtn, setShowBtn] = useState<boolean>(true);
+
   return (
     <div>
-      <button
-        onClick={() => {
-          setLoader();
-          getIpData();
-        }}
-      >
-        GET IP
-      </button>
+      {showBtn && (
+        <button
+          onClick={() => {
+            setShowBtn(false);
+            setLoader();
+            getIpData();
+          }}
+        >
+          GET IP Details
+        </button>
+      )}
     </div>
   );
 };

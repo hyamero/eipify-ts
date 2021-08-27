@@ -37,9 +37,10 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
             transform: rotate(0deg);
             filter: hue-rotate(0deg);
           }
+
           100% {
-            transform: rotate(360deg);
-            filter: hue-rotate(360deg);
+            transform: rotate(720deg);
+            filter: hue-rotate(720deg);
           }
         }
         .loader:before {
