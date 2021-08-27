@@ -1,11 +1,18 @@
 import React from "react";
 
-interface ContentProps {}
+interface ContentProps {
+  dataIP: any;
+  loading: undefined | boolean;
+}
 
-export const Content: React.FC<ContentProps> = ({}) => {
+export const Content: React.FC<ContentProps> = ({ dataIP, loading }) => {
   return (
-    <div>
-      <span></span>
-    </div>
+    <section>
+      {loading === false ? (
+        <>
+          <p>{dataIP.continent}</p>
+        </>
+      ) : null}
+    </section>
   );
 };

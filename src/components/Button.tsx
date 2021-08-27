@@ -1,17 +1,16 @@
 import React from "react";
 
 interface ButtonProps {
-  getIP: () => void;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   getIpData: () => void;
+  setLoader: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ getIpData, setLoading }) => {
+export const Button: React.FC<ButtonProps> = ({ getIpData, setLoader }) => {
   return (
     <div>
       <button
         onClick={() => {
-          setLoading(true);
+          setLoader();
           getIpData();
         }}
       >
