@@ -4,10 +4,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { Navbar } from "./components/Navbar";
+import { Button } from "./components/Button";
 import background from "./img/background1.jpg";
 
 const App: React.FC = () => {
   const [IP, setIP] = useState<string>();
+  const [DataIP, setDataIP] = useState();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getIP();
@@ -17,16 +20,23 @@ const App: React.FC = () => {
     const url = "https://api.techniknews.net/ip/";
     try {
       //get user IP
-      const res = await axios.get(url);
-      setIP(res.data);
-      console.log(IP);
-      //get full IP data
-      const response = await axios.get(
-        `https://api.techniknews.net/ipgeo/${IP}`
-      );
-      console.log(response);
+      const ip = await axios.get(url);
+      setIP(ip.data);
+      console.log(ip.data);
     } catch (err) {
-      console.log(err);
+      console.log(err, "Failed to grab user IP");
+    }
+  };
+
+  const getIpData = async () => {
+    const url = "https://api.techniknews.net/ipgeo/";
+    try {
+      //get full IP data
+      const res = await axios.get(`${url}${IP}`);
+      setDataIP(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err, "Failed to grab user IP details");
     }
   };
 
@@ -47,6 +57,7 @@ const App: React.FC = () => {
       `}
     >
       <Navbar />
+      <Button getIP={getIP} setLoading={setLoading} getIpData={getIpData} />
       <span>work in progress</span>
       <Global
         styles={css`
