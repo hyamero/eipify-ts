@@ -30,16 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
           &-icons {
             font-size: 1rem;
-
-            &-icon {
-              padding: 5px;
-              border: 1px #e6ebf2 solid;
-              border-radius: 50%;
-
-              &:not(:last-child) {
-                margin-right: 1rem;
-              }
-            }
           }
 
           &-btn {
@@ -59,14 +49,38 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             }
           }
         }
+
+        a {
+          color: #fff;
+
+          &:not(:last-child) {
+            margin-right: 1rem;
+          }
+
+          .connect-icons-icon {
+            padding: 5px;
+            border: 1px #e6ebf2 solid;
+            border-radius: 50%;
+
+            &:hover {
+              background: #1f2d3e;
+            }
+          }
+        }
       `}
     >
-      <h1>headify.</h1>
+      <h1>eipify.</h1>
       <div className="connect">
         <div className="connect-icons">
-          <AiOutlineInstagram className="connect-icons-icon" />
-          <AiOutlineGithub className="connect-icons-icon" />
-          <RiLinkedinFill className="connect-icons-icon" />
+          <a href="https://www.instagram.com/dale.ps/" target="_blank">
+            <AiOutlineInstagram className="connect-icons-icon" />
+          </a>
+          <a href="https://github.com/hyamero" target="_blank">
+            <AiOutlineGithub className="connect-icons-icon" />
+          </a>
+          <a href="https://www.linkedin.com/in/daleban/" target="_blank">
+            <RiLinkedinFill className="connect-icons-icon" />
+          </a>
         </div>
         {/* <div className="connect-btn">
           <p>connect</p>
