@@ -8,6 +8,7 @@ import hand from "../img/3dhand-cmprsd.png";
 interface ButtonProps {
   getIpData: () => void;
   setLoader: () => void;
+  setShowContent: React.Dispatch<React.SetStateAction<boolean>>;
   loading: undefined | boolean;
 }
 
@@ -15,6 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
   getIpData,
   setLoader,
   loading,
+  setShowContent,
 }) => {
   const [showBtn, setShowBtn] = useState<boolean>(true);
   const [onHover, setOnHover] = useState<boolean>(false);
@@ -71,6 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
               setShowBtn(false);
               setLoader();
               getIpData();
+              setShowContent(true);
             }}
           >
             GET IP DETAILS
@@ -85,6 +88,7 @@ export const Button: React.FC<ButtonProps> = ({
               setShowBtn(false);
               setLoader();
               getIpData();
+              setShowContent(true);
             }}
           />
         </div>

@@ -14,9 +14,14 @@ const App: React.FC = () => {
   const [IP, setIP] = useState<string>();
   const [dataIP, setDataIP] = useState<any>();
   const [loading, setLoading] = useState<boolean | undefined>();
+  const [showContent, setShowContent] = useState<boolean>(false);
 
   useEffect(() => {
     getIP();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
   }, []);
 
   const getIP = async () => {
@@ -68,8 +73,13 @@ const App: React.FC = () => {
     >
       <Navbar />
       {loading && <Loader />}
-      <Button setLoader={setLoader} getIpData={getIpData} loading={loading} />
-      <Content dataIP={dataIP} loading={loading} />
+      <Button
+        setLoader={setLoader}
+        getIpData={getIpData}
+        loading={loading}
+        setShowContent={setShowContent}
+      />
+      <Content dataIP={dataIP} loading={loading} showContent={showContent} />
       <Global
         styles={css`
           @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");

@@ -6,9 +6,14 @@ import React from "react";
 interface ContentProps {
   dataIP: any;
   loading: undefined | boolean;
+  showContent: boolean;
 }
 
-export const Content: React.FC<ContentProps> = ({ dataIP, loading }) => {
+export const Content: React.FC<ContentProps> = ({
+  dataIP,
+  loading,
+  showContent,
+}) => {
   return (
     <section
       className="Content"
@@ -44,7 +49,7 @@ export const Content: React.FC<ContentProps> = ({ dataIP, loading }) => {
         }
       `}
     >
-      {loading === false ? (
+      {loading === false && showContent ? (
         <div>
           <p className="details">
             Your public IP is {dataIP.ip}, <br /> located in {dataIP.city},{" "}
