@@ -3,7 +3,7 @@
 import { css, jsx } from "@emotion/react";
 
 import React, { useState } from "react";
-import hand from "../img/3dhand.png";
+import hand from "../img/3dhand-cmprsd.png";
 
 interface ButtonProps {
   getIpData: () => void;

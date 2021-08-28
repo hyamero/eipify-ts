@@ -7,7 +7,8 @@ import { Navbar } from "./components/Navbar";
 import { Button } from "./components/Button";
 import { Content } from "./components/Content";
 import { Loader } from "./components/Loader";
-import background from "./img/background1.jpg";
+//image by Sebastian Svenson
+import background from "./img/background1-cmprsd.jpg";
 
 const App: React.FC = () => {
   const [IP, setIP] = useState<string>();

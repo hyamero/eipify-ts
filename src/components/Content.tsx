@@ -52,10 +52,10 @@ export const Content: React.FC<ContentProps> = ({ dataIP, loading }) => {
           </p>
           <ul>
             <li>
-              <h3>IP:</h3> {dataIP.ip}
+              <h3>IP: </h3> {dataIP.ip}
             </li>
             <li>
-              <h3>ISP:</h3> {dataIP.isp}
+              <h3>ISP: </h3> {dataIP.isp}
             </li>
             <li>
               <h3>Continent:</h3> {dataIP.continent}
