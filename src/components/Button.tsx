@@ -3,7 +3,7 @@
 import { css, jsx } from "@emotion/react";
 
 import React, { useState } from "react";
-import hand from "../img/3dhand-cmprsd.png";
+import hand from "../img/3dhand.png";
 
 interface ButtonProps {
   getIpData: () => void;
@@ -63,10 +63,14 @@ export const Button: React.FC<ButtonProps> = ({
           background: #1f2d3e;
           font-size: 2.01rem;
         }
+
+        .hide-element {
+          z-index: -5;
+        }
       `}
     >
-      {showBtn && (
-        <div className="grid-button">
+      {showBtn && !loading ? (
+        <div className={loading ? "hide-element" : "grid-button"}>
           <button
             className={onHover ? "btn-hover" : ""}
             onClick={() => {
@@ -92,7 +96,7 @@ export const Button: React.FC<ButtonProps> = ({
             }}
           />
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
