@@ -136,9 +136,9 @@ export const Content: React.FC<ContentProps> = ({
             {showDetails && (
               <motion.div
                 className="ul-container"
-                initial={{ y: -200, opacity: 0, scale: 0.2 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: -200, opacity: 0, scale: 0.2 }}
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -200, opacity: 0, scale: 0.4 }}
               >
                 <ul className="flex-ul margin-right">
                   {/* <li>
