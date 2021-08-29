@@ -8,7 +8,7 @@ import { Button } from "./components/Button";
 import { Content } from "./components/Content";
 import { Loader } from "./components/Loader";
 //image by Sebastian Svenson
-import background from "./img/background1-cmprsd.jpg";
+import background from "./img/background1.jpg";
 
 const App: React.FC = () => {
   const [IP, setIP] = useState<string>();
@@ -18,10 +18,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     getIP();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
   }, []);
 
   const getIP = async () => {
@@ -63,6 +59,7 @@ const App: React.FC = () => {
         background: url(${background});
         background-size: cover;
         text-align: center;
+        overflow: hidden;
 
         span {
           font-size: 7rem;

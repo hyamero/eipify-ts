@@ -1,6 +1,7 @@
 /** @jsx jsx */
 /** @jsxFrag */
 import { css, jsx } from "@emotion/react";
+import { motion } from "framer-motion";
 
 import React, { useState } from "react";
 import hand from "../img/3dhand.png";
@@ -35,7 +36,6 @@ export const Button: React.FC<ButtonProps> = ({
           height: 400px;
           position: relative;
           top: 40px;
-          transform: rotate(60deg);
           cursor: pointer;
         }
 
@@ -82,7 +82,9 @@ export const Button: React.FC<ButtonProps> = ({
           >
             GET IP DETAILS
           </button>
-          <img
+          <motion.img
+            initial={{ rotate: 60 }}
+            whileHover={{ rotate: 30, y: 60 }}
             className="hand"
             src={hand}
             alt="3d hand"
