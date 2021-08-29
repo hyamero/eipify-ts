@@ -111,7 +111,11 @@ export const Content: React.FC<ContentProps> = ({
     >
       {loading === false && showContent ? (
         <div className="center-details">
-          <div className="details">
+          <motion.div
+            className="details"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
             <div className="text-wrapper">
               Your public IP is <p className="ip-text"> {dataIP.ip}</p>, <br />{" "}
               located in {dataIP.city}, {dataIP.country}{" "}
@@ -127,7 +131,7 @@ export const Content: React.FC<ContentProps> = ({
                 <h5 className="less-btn">see less</h5>
               </div>
             )}
-          </div>
+          </motion.div>
           <AnimatePresence>
             {showDetails && (
               <motion.div
