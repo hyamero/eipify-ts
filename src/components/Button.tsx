@@ -3,24 +3,24 @@
 import { css, jsx } from "@emotion/react";
 import { motion } from "framer-motion";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import hand from "../img/3dhand.png";
 
 interface ButtonProps {
-  getIpData: () => void;
   setLoader: () => void;
   setShowContent: React.Dispatch<React.SetStateAction<boolean>>;
   loading: undefined | boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  getIpData,
   setLoader,
   loading,
   setShowContent,
 }) => {
   const [showBtn, setShowBtn] = useState<boolean>(true);
   const [onHover, setOnHover] = useState<boolean>(false);
+
+  const constraintsRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -30,6 +30,8 @@ export const Button: React.FC<ButtonProps> = ({
           display: grid;
           grid-template-columns: 1fr;
           place-items: center;
+          width: 30vw;
+          margin: auto;
         }
 
         .hand {
@@ -37,6 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
           position: relative;
           top: 40px;
           cursor: pointer;
+          -webkit-user-drag: none;
         }
 
         button {
@@ -70,19 +73,23 @@ export const Button: React.FC<ButtonProps> = ({
       `}
     >
       {showBtn && !loading ? (
-        <div className={loading ? "hide-element" : "grid-button"}>
+        <div
+          className={loading ? "hide-element" : "grid-button"}
+          ref={constraintsRef}
+        >
           <button
             className={onHover ? "btn-hover" : ""}
             onClick={() => {
               setShowBtn(false);
               setLoader();
-              getIpData();
               setShowContent(true);
             }}
           >
             GET IP DETAILS
           </button>
           <motion.img
+            drag
+            dragConstraints={constraintsRef}
             initial={{ rotate: 60 }}
             whileHover={{ rotate: 30, y: 60 }}
             className="hand"
@@ -93,7 +100,6 @@ export const Button: React.FC<ButtonProps> = ({
             onClick={() => {
               setShowBtn(false);
               setLoader();
-              getIpData();
               setShowContent(true);
             }}
           />
