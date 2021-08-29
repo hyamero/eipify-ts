@@ -2,6 +2,7 @@
 /** @jsxFrag */
 import { css, jsx } from "@emotion/react";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
@@ -43,6 +44,7 @@ export const Content: React.FC<ContentProps> = ({
           margin: 50px 0;
           display: flex;
           flex-direction: column;
+          z-index: 2;
 
           .ip-text {
             display: inline;
@@ -54,9 +56,10 @@ export const Content: React.FC<ContentProps> = ({
             top: 30px;
             cursor: pointer;
             display: inline-block;
+            opacity: 0.8;
 
             h5 {
-              font-weight: 200;
+              font-weight: 300;
               font-size: 0.8rem;
               position: relative;
               top: 10px;
@@ -125,50 +128,57 @@ export const Content: React.FC<ContentProps> = ({
               </div>
             )}
           </div>
-          {showDetails && (
-            <div className="ul-container">
-              <ul className="flex-ul margin-right">
-                {/* <li>
+          <AnimatePresence>
+            {showDetails && (
+              <motion.div
+                className="ul-container"
+                initial={{ y: -200, opacity: 0, scale: 0.2 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                exit={{ y: -200, opacity: 0, scale: 0.2 }}
+              >
+                <ul className="flex-ul margin-right">
+                  {/* <li>
                 <h3>IP: </h3> {dataIP.ip}
               </li> */}
-                <li>
-                  <h3>Continent:</h3> {dataIP.continent}
-                </li>
-                {/* <li>
+                  <li>
+                    <h3>Continent:</h3> {dataIP.continent}
+                  </li>
+                  {/* <li>
                 <h3>Country:</h3> {dataIP.country}
               </li> */}
-                <li>
-                  <h3>Region:</h3> {dataIP.regionName}
-                </li>
-                {/* <li>
+                  <li>
+                    <h3>Region:</h3> {dataIP.regionName}
+                  </li>
+                  {/* <li>
                 <h3>City:</h3> {dataIP.city}
               </li> */}
-                <li>
-                  <h3>Country Code:</h3> {dataIP.countryCode}
-                </li>
-                <li>
-                  <h3>Zip Code:</h3> {dataIP.zip}
-                </li>
-                <li>
-                  <h3>Timezone:</h3> {dataIP.timezone}
-                </li>
-              </ul>
-              <ul className="flex-ul">
-                <li>
-                  <h3>Latitude:</h3> {dataIP.lat}
-                </li>
-                <li>
-                  <h3>Longitude:</h3> {dataIP.lon}
-                </li>
-                <li>
-                  <h3>ASN: </h3> {dataIP.as.split(" ").slice(0, 1).join("")}
-                </li>
-                <li>
-                  <h3>ISP: </h3> {dataIP.isp}
-                </li>
-              </ul>
-            </div>
-          )}
+                  <li>
+                    <h3>Country Code:</h3> {dataIP.countryCode}
+                  </li>
+                  <li>
+                    <h3>Zip Code:</h3> {dataIP.zip}
+                  </li>
+                  <li>
+                    <h3>Timezone:</h3> {dataIP.timezone}
+                  </li>
+                </ul>
+                <ul className="flex-ul">
+                  <li>
+                    <h3>Latitude:</h3> {dataIP.lat}
+                  </li>
+                  <li>
+                    <h3>Longitude:</h3> {dataIP.lon}
+                  </li>
+                  <li>
+                    <h3>ASN: </h3> {dataIP.as.split(" ").slice(0, 1).join("")}
+                  </li>
+                  <li>
+                    <h3>ISP: </h3> {dataIP.isp}
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ) : null}
     </section>
