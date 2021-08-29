@@ -80,14 +80,16 @@ export const Content: React.FC<ContentProps> = ({
     >
       {loading === false && showContent ? (
         <div className="center-details">
-          <p className="details">
-            Your public IP is {dataIP.ip}, <br /> located in {dataIP.city},{" "}
-            {dataIP.country}
+          <div className="details">
+            <p>
+              Your public IP is {dataIP.ip}, <br /> located in {dataIP.city},{" "}
+              {dataIP.country}{" "}
+            </p>
             <div className="arrow-down">
               <h5>more details</h5>
               <MdKeyboardArrowDown />
             </div>
-          </p>
+          </div>
           <ul>
             <div className="flex-ul">
               <li>

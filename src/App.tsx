@@ -20,6 +20,10 @@ const App: React.FC = () => {
     getIP();
   }, []);
 
+  useEffect(() => {
+    getIpData();
+  }, [IP]);
+
   const getIP = async () => {
     const url = "https://api.techniknews.net/ip/";
     try {
@@ -72,7 +76,6 @@ const App: React.FC = () => {
       {loading && <Loader />}
       <Button
         setLoader={setLoader}
-        getIpData={getIpData}
         loading={loading}
         setShowContent={setShowContent}
       />
