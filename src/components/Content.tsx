@@ -1,9 +1,9 @@
 /** @jsx jsx */
 /** @jsxFrag */
 import { css, jsx } from "@emotion/react";
-import React from "react";
+import React, { useState } from "react";
 
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 interface ContentProps {
   dataIP: any;
@@ -16,6 +16,8 @@ export const Content: React.FC<ContentProps> = ({
   loading,
   showContent,
 }) => {
+  const [showDetails, setShowDetails] = useState<boolean>(false);
+
   return (
     <section
       className="Content"
@@ -34,41 +36,67 @@ export const Content: React.FC<ContentProps> = ({
           color: #e0e0e0;
           font-weight: 500;
           background: #131c27;
-          padding: 40px 60px;
-          border-top-right-radius: 50px;
-          border-top-left-radius: 50px;
+          padding: 40px 50px;
+          border-radius: 50px;
+          /* border-top-right-radius: 50px;
+          border-top-left-radius: 50px; */
           margin: 50px 0;
+          display: flex;
+          flex-direction: column;
+
+          .ip-text {
+            display: inline;
+            color: #7fb8ff;
+          }
 
           .arrow-down {
             position: relative;
             top: 30px;
+            cursor: pointer;
+            display: inline-block;
 
             h5 {
-              font-weight: 400;
-              font-size: 1rem;
+              font-weight: 200;
+              font-size: 0.8rem;
+              position: relative;
+              top: 10px;
+            }
+
+            .less-btn {
+              top: -20px;
             }
           }
         }
-
-        ul {
-          text-align: left;
-          list-style: none;
+        .ul-container {
           display: flex;
           justify-content: space-between;
+          align-items: center;
+          padding: 50px;
+          background: #131c27;
+          border-radius: 50px;
+          position: relative;
+          bottom: 30px;
 
-          .flex-ul {
-            flex-basis: 50%;
+          .margin-right {
           }
 
-          li {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #e0e0e0;
+          ul.flex-ul {
+            text-align: center;
+            list-style: none;
+            flex-basis: 50%;
 
-            h3 {
-              display: inline;
-              font-size: 1rem;
-              font-weight: 600;
+            li {
+              font-size: 1.2rem;
+              font-weight: 300;
+              color: #e0e0e0;
+
+              h3 {
+                display: inline;
+                font-size: 1rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #7fb8ff;
+              }
             }
           }
 
@@ -81,54 +109,66 @@ export const Content: React.FC<ContentProps> = ({
       {loading === false && showContent ? (
         <div className="center-details">
           <div className="details">
-            <p>
-              Your public IP is {dataIP.ip}, <br /> located in {dataIP.city},{" "}
-              {dataIP.country}{" "}
-            </p>
-            <div className="arrow-down">
-              <h5>more details</h5>
-              <MdKeyboardArrowDown />
+            <div className="text-wrapper">
+              Your public IP is <p className="ip-text"> {dataIP.ip}</p>, <br />{" "}
+              located in {dataIP.city}, {dataIP.country}{" "}
             </div>
+            {!showDetails ? (
+              <div className="arrow-down" onClick={() => setShowDetails(true)}>
+                <h5>more details</h5>
+                <MdKeyboardArrowDown />
+              </div>
+            ) : (
+              <div className="arrow-down" onClick={() => setShowDetails(false)}>
+                <MdKeyboardArrowUp />
+                <h5 className="less-btn">see less</h5>
+              </div>
+            )}
           </div>
-          <ul>
-            <div className="flex-ul">
-              <li>
+          {showDetails && (
+            <div className="ul-container">
+              <ul className="flex-ul margin-right">
+                {/* <li>
                 <h3>IP: </h3> {dataIP.ip}
-              </li>
-              <li>
-                <h3>Continent:</h3> {dataIP.continent}
-              </li>
-              <li>
+              </li> */}
+                <li>
+                  <h3>Continent:</h3> {dataIP.continent}
+                </li>
+                {/* <li>
                 <h3>Country:</h3> {dataIP.country}
-              </li>
-              <li>
-                <h3>Region:</h3> {dataIP.regionName}
-              </li>
-              <li>
+              </li> */}
+                <li>
+                  <h3>Region:</h3> {dataIP.regionName}
+                </li>
+                {/* <li>
                 <h3>City:</h3> {dataIP.city}
-              </li>
+              </li> */}
+                <li>
+                  <h3>Country Code:</h3> {dataIP.countryCode}
+                </li>
+                <li>
+                  <h3>Zip Code:</h3> {dataIP.zip}
+                </li>
+                <li>
+                  <h3>Timezone:</h3> {dataIP.timezone}
+                </li>
+              </ul>
+              <ul className="flex-ul">
+                <li>
+                  <h3>Latitude:</h3> {dataIP.lat}
+                </li>
+                <li>
+                  <h3>Longitude:</h3> {dataIP.lon}
+                </li>
+                <li>
+                  <h3>ASN: </h3> {dataIP.as.split(" ").slice(0, 1).join("")}
+                </li>
+                <li>
+                  <h3>ISP: </h3> {dataIP.isp}
+                </li>
+              </ul>
             </div>
-            <div className="flex-ul">
-              <li>
-                <h3>Country Code:</h3> {dataIP.countryCode}
-              </li>
-              <li>
-                <h3>Zip Code:</h3> {dataIP.zip}
-              </li>
-              <li>
-                <h3>Timezone:</h3> {dataIP.timezone}
-              </li>
-              <li>
-                <h3>Latitude:</h3> {dataIP.lat}
-              </li>
-              <li>
-                <h3>Longitude:</h3> {dataIP.lon}
-              </li>
-              <li>
-                <h3>ISP: </h3> {dataIP.isp}
-              </li>
-            </div>
-          </ul>
+          )}
         </div>
       ) : null}
     </section>
