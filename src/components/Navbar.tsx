@@ -9,6 +9,9 @@ import { motion } from "framer-motion";
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+  //emotion.sh media query
+  const breakpoints = [576, 768, 992, 1200];
+  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
   return (
     <nav
       css={css`
@@ -18,7 +21,6 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         width: 90%;
         max-width: 1280px;
         padding-top: 20px;
-        height: 4vw;
         margin: auto;
         color: #e6ebf2;
 
@@ -75,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
             &:hover {
               background: #1f2d3e;
+              color: #7fb8ff;
             }
           }
         }
@@ -82,6 +85,27 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         .repo-link {
           text-decoration: none;
           color: #e6ebf2;
+        }
+
+        ${mq[0]} {
+          display: block;
+
+          .connect {
+            margin: auto;
+            display: block;
+            margin: auto;
+
+            &-repo-btn {
+              border: none;
+              margin: auto;
+              justify-content: center;
+
+              &:hover {
+                background: none;
+                color: #7fb8ff;
+              }
+            }
+          }
         }
       `}
     >
