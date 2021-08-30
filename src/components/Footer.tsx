@@ -6,6 +6,8 @@ import React from "react";
 interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = ({}) => {
+  const breakpoints = [576, 768, 992, 1200];
+  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
   return (
     <footer
       css={css`
@@ -27,11 +29,19 @@ export const Footer: React.FC<FooterProps> = ({}) => {
             color: #e0e0e0;
             font-weight: 300;
 
+            ${mq[1]} {
+              font-size: 0.7rem;
+            }
+
             a {
               text-decoration: none;
               color: #e0e0e0;
               transition: 0.1s linear;
               font-size: 0.9rem;
+
+              ${mq[1]} {
+                font-size: 0.7rem;
+              }
 
               &:hover {
                 color: #7fb8ff;

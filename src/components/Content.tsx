@@ -19,12 +19,16 @@ export const Content: React.FC<ContentProps> = ({
 }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
+  //emotion.sh media query
+  const breakpoints = [576, 768, 992, 1200];
+  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
+
   return (
     <section
       className="Content"
       css={css`
         .center-details {
-          width: 45vw;
+          width: 70vw;
           margin: auto;
           height: 96vh;
           display: flex;
@@ -45,6 +49,21 @@ export const Content: React.FC<ContentProps> = ({
           display: flex;
           flex-direction: column;
           z-index: 2;
+
+          ${mq[3]} {
+            font-size: 1.6rem;
+            padding: 30px 40px;
+          }
+
+          ${mq[1]} {
+            font-size: 1.3rem;
+            padding: 30px 40px;
+            margin: 20px 0 50px 0;
+          }
+
+          ${mq[0]} {
+            font-size: 1rem;
+          }
 
           .ip-text {
             display: inline;
@@ -74,11 +93,17 @@ export const Content: React.FC<ContentProps> = ({
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 50px;
+          padding: 50px 0;
           background: #131c27;
           border-radius: 50px;
           position: relative;
           bottom: 30px;
+
+          ${mq[1]} {
+            display: initial;
+            width: 50%;
+            padding: 50px 30px;
+          }
 
           ul.flex-ul {
             text-align: center;
@@ -89,6 +114,7 @@ export const Content: React.FC<ContentProps> = ({
               font-size: 1.2rem;
               font-weight: 300;
               color: #e0e0e0;
+              margin: 0 10px;
 
               h3 {
                 display: inline;
@@ -96,6 +122,30 @@ export const Content: React.FC<ContentProps> = ({
                 font-weight: 600;
                 text-transform: uppercase;
                 color: #7fb8ff;
+              }
+
+              ${mq[2]} {
+                font-size: 1.1rem;
+
+                h3 {
+                  font-size: 0.9rem;
+                }
+              }
+
+              ${mq[1]} {
+                font-size: 0.9rem;
+
+                h3 {
+                  font-size: 0.7rem;
+                }
+              }
+
+              ${mq[0]} {
+                font-size: 0.9rem;
+
+                h3 {
+                  font-size: 0.6rem;
+                }
               }
             }
           }
@@ -125,7 +175,6 @@ export const Content: React.FC<ContentProps> = ({
             ) : (
               <div className="arrow-down" onClick={() => setShowDetails(false)}>
                 <MdKeyboardArrowUp />
-                <h5 className="less-btn">see less</h5>
               </div>
             )}
           </motion.div>
