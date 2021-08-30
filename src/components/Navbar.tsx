@@ -51,7 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             }
 
             p {
-              font-size: 1rem;
+              font-size: 0.8rem;
+              display: inline-block;
             }
 
             .icon-arrow {

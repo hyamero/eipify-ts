@@ -58,11 +58,11 @@ export const Content: React.FC<ContentProps> = ({
           ${mq[1]} {
             font-size: 1.3rem;
             padding: 30px 40px;
-            margin: 20px 0 50px 0;
           }
 
           ${mq[0]} {
             font-size: 1rem;
+            margin: 20px 0 50px 0;
           }
 
           .ip-text {
@@ -141,7 +141,7 @@ export const Content: React.FC<ContentProps> = ({
               }
 
               ${mq[0]} {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
 
                 h3 {
                   font-size: 0.6rem;

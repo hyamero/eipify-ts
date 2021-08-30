@@ -18,6 +18,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
 
         ul {
           padding: 10px;
+          list-style: none;
 
           .link-info {
             font-weight: 300;

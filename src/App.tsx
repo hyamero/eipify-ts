@@ -90,6 +90,7 @@ const App: React.FC = () => {
             margin: 0;
             padding: 0;
             font-family: "Poppins", sans-serif;
+            -webkit-tap-highlight-color: transparent;
           }
         `}
       />
