@@ -99,6 +99,11 @@ export const Content: React.FC<ContentProps> = ({
           position: relative;
           bottom: 30px;
 
+          ${mq[2]} {
+            display: initial;
+            width: 50%;
+            padding: 50px 50px;
+          }
           ${mq[1]} {
             display: initial;
             width: 50%;
@@ -109,6 +114,10 @@ export const Content: React.FC<ContentProps> = ({
             text-align: center;
             list-style: none;
             flex-basis: 50%;
+
+            ${mq[2]} {
+              text-align: left;
+            }
 
             li {
               font-size: 1.2rem;
@@ -140,13 +149,13 @@ export const Content: React.FC<ContentProps> = ({
                 }
               }
 
-              ${mq[0]} {
+              /* ${mq[0]} {
                 font-size: 0.8rem;
 
                 h3 {
                   font-size: 0.6rem;
                 }
-              }
+              } */
             }
           }
 
