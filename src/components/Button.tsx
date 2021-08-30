@@ -1,9 +1,8 @@
 /** @jsx jsx */
 /** @jsxFrag */
 import { css, jsx } from "@emotion/react";
-import { motion } from "framer-motion";
-
 import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import hand from "../img/3dhand.png";
 
 interface ButtonProps {
@@ -20,8 +19,11 @@ export const Button: React.FC<ButtonProps> = ({
   const [showBtn, setShowBtn] = useState<boolean>(true);
   const [onHover, setOnHover] = useState<boolean>(false);
 
-  const constraintsRef = useRef<HTMLDivElement>(null);
+  const constraintsRef = useRef<HTMLImageElement>(null);
 
+  //emotion.sh media query
+  const breakpoints = [576, 768, 992, 1200];
+  const mq = breakpoints.map((bp) => `@media (max-width: ${bp}px)`);
   return (
     <div
       className="Button-center"
@@ -30,7 +32,6 @@ export const Button: React.FC<ButtonProps> = ({
           display: grid;
           grid-template-columns: 1fr;
           place-items: center;
-          width: 30vw;
           margin: auto;
         }
 
@@ -40,6 +41,15 @@ export const Button: React.FC<ButtonProps> = ({
           top: 40px;
           cursor: pointer;
           -webkit-user-drag: none;
+
+          ${mq[1]} {
+            height: 330px;
+            top: 60px;
+          }
+          ${mq[0]} {
+            height: 290px;
+            top: 70px;
+          }
         }
 
         button {
@@ -57,14 +67,24 @@ export const Button: React.FC<ButtonProps> = ({
           transition: linear 0.3s;
           cursor: pointer;
 
+          ${mq[1]} {
+            height: 90px;
+            width: 340px;
+            font-size: 1.8rem;
+          }
+
+          ${mq[0]} {
+            height: 80px;
+            width: 280px;
+            font-size: 1.6rem;
+          }
+
           &:hover {
             background: #1f2d3e;
-            font-size: 2.01rem;
           }
         }
         .btn-hover {
           background: #1f2d3e;
-          font-size: 2.01rem;
         }
 
         .hide-element {
@@ -73,10 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
       `}
     >
       {showBtn && !loading ? (
-        <div
-          className={loading ? "hide-element" : "grid-button"}
-          ref={constraintsRef}
-        >
+        <div className={loading ? "hide-element" : "grid-button"}>
           <button
             className={onHover ? "btn-hover" : ""}
             onClick={() => {
@@ -89,6 +106,7 @@ export const Button: React.FC<ButtonProps> = ({
           </button>
           <motion.img
             drag
+            ref={constraintsRef}
             dragConstraints={constraintsRef}
             initial={{ rotate: 60 }}
             whileHover={{ rotate: 30, y: 60 }}
