@@ -80,9 +80,6 @@ export const Content: React.FC<ContentProps> = ({
           position: relative;
           bottom: 30px;
 
-          .margin-right {
-          }
-
           ul.flex-ul {
             text-align: center;
             list-style: none;
