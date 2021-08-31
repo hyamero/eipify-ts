@@ -43,8 +43,6 @@ export const Content: React.FC<ContentProps> = ({
           background: #131c27;
           padding: 40px 50px;
           border-radius: 50px;
-          /* border-top-right-radius: 50px;
-          border-top-left-radius: 50px; */
           margin: 50px 0;
           display: flex;
           flex-direction: column;
@@ -148,14 +146,6 @@ export const Content: React.FC<ContentProps> = ({
                   font-size: 0.7rem;
                 }
               }
-
-              /* ${mq[0]} {
-                font-size: 0.8rem;
-
-                h3 {
-                  font-size: 0.6rem;
-                }
-              } */
             }
           }
 
@@ -196,21 +186,12 @@ export const Content: React.FC<ContentProps> = ({
                 exit={{ y: -200, opacity: 0, scale: 0.4 }}
               >
                 <ul className="flex-ul margin-right">
-                  {/* <li>
-                <h3>IP: </h3> {dataIP.ip}
-              </li> */}
                   <li>
                     <h3>Continent:</h3> {dataIP.continent}
                   </li>
-                  {/* <li>
-                <h3>Country:</h3> {dataIP.country}
-              </li> */}
                   <li>
                     <h3>Region:</h3> {dataIP.regionName}
                   </li>
-                  {/* <li>
-                <h3>City:</h3> {dataIP.city}
-              </li> */}
                   <li>
                     <h3>Country Code:</h3> {dataIP.countryCode}
                   </li>
