@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
         </li>
         <li className="footer-info">
           <a href=""></a>
-          &copy; 2021 Eipify ⫽ Joseph Dale Bañares. All Rights Reserved.
+          &copy; 2021 Eipify ⫽ Dale B. All Rights Reserved.
         </li>
       </ul>
     </footer>
